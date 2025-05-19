@@ -1,44 +1,30 @@
-# Opis zadania
+# Wizualizacja Hierarchii Pracowników 
 
-Twoim zdaniem będzie stworzenie prostej aplikacji, która pozwoli przeglądać dostępnych pracowników oraz sprawdzać gdzie
-znajdują się oni w hierarchii firmy.
+## Kluczowe Funkcjonalności
 
-W tym celu należy:
+- **Interaktywne drzewo hierarchii** - wizualizacja relacji pracowników, możliwość przełączania pomiędzy pracownikami za pośrednictwem bezpośredniego kliknięcia w drzewi
+- **Wiele trybów wyświetlania** - możliwość wyświetlenia podwładnych, przełożonych lub całego drzewa
+- **Zmiana orientacji** - przełączanie między widokiem pionowym i poziomym
+- **Wyszukiwanie pracowników** - filtrowanie w czasie rzeczywistym (po nazwisku/imieniu/imieniu i nazwisku)
+- **Responsywny interfejs** - dostosowanie do różnych rozmiarów ekranu
+- **Zwijany panel kontrolny** - maksymalizacja przestrzeni
+- **Automatyczne przewijanie** - automatyczne przewijanie widoku do wybranego pracownika
+- **Sortowanie pracowników** - sortowanie pracownikó alfabetycznie (według nazwiska) w selekcie, w celu łątwiejszej lokalizacji danego pracownika
+- **Ścieżka pracownicza** - zaznaczenie ścieżki przełożonych do danego pracownika
+- **Identyfikacja pracowników** - identyfikacja według id
 
-1. Stworzyć wybierak dla listy pracowników (plik z listą pracowników w formacie json `src/app/data/employees.json`),
-   dzięki któremu użytkownicy będą mogli przeglądać listę dostępnych pracowników.
+## Wykorzystane Technologie
 
-2. Dodać funkcjonalność, która po wybraniu pracownika z wybieraka listy pracowników, pozwoli wyświetlić reprezentację
-   hierarchii tego pracownika w strukturze drzewiastej. (plik z drzewiastą strukturą w formacie
-   json: `src/app/data/employees-structure`).
-
-Wymagania:
-
-- Pracownicy w aplikacji powinni istnieć jako wewnętrzne obiekty.
-- Na wybieraku oraz w reprezentacji hierarchii pracownika chcemy wyświetlać imię, oraz nazwisko pracownika.
-
-Styl rozwiązania może być dowolny, jednak trzeba pamiętać o tym, aby był funkcjonalny i w pełni spełniał oczekiwania
-użytkowników tej aplikacji. Projekt jest do Twojej dyspozycji!
-
---- 
-Przykład, dla bardzo prostej struktury pracowniczej.
-
-![Przykładowa struktura pracowników](src/assets/example-tree.png)
-
-Przykładowa struktura pracowników.
+- **Angular Signals** - reaktywne zarządzanie stanem
+- **Standalone Components** - zalecane podejście przez Angulara
+- **OnPush Change Detection** - w celu wydajności
+- **Rekurencyjny komponent drzewa** - wybrane podejście w celu narysowania drzewa hieratchi
 
 
-![Przykładowe rozwiązanie](src/assets/example-result.png)
+## Architektura Aplikacji
 
-Przykład reprezentacji hierarchii wybranego Pracownika "D".
-
----
-Projekt został stworzony za pomocą narzędzi z następującymi wersjami:
-> npm 8.6.0
-
-> node v16.14.2
-
-> Angular CLI 16.0.1
-
----
-Horus
+- **Komponenty prezentacyjne** - odpowiedzialne za renderowanie UI
+- **Serwisy** - zarządzanie danymi i logiką biznesową
+- **Modele** - definicje typów i interfejsów
+- **Style** - modularny system stylów SCSS
+- **Style globalne** - usystematyzowanie podstawowych styli dla całej aplikacji
