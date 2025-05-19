@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+@import '../../../styles/colors';
+
+.employee-tree {
+  display: grid;
+  overflow: auto;
+  height: 100%;
+  padding: $spacing-lg;
+  border: 1px solid $Gray300;
+  border-radius: $border-radius-md;
+  background-color: $Gray50;
+  
+  .tree-container {
+    display: flex;
+    width: 100%;
+    
+    &.vertical {
+      flex-direction: column;
+      align-items: center;
+      padding: $spacing-lg 0;
+    }
+    
+    &.horizontal {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 $spacing-lg;
+    }
+  }
+  
+  .no-employee {
+    text-align: center;
+    padding: $spacing-lg;
+    color: $Gray500;
+  }
+}

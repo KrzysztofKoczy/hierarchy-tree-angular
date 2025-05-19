@@ -1,0 +1,40 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/colors';
+
+.display-mode-toggle {
+  margin-bottom: $spacing-lg;
+  
+  .buttons-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacing-sm;
+
+    @media (max-width: $breakpoint) {
+      flex-direction: column;
+    }
+  }
+  
+  .toggle-button {
+    @include button;
+    flex: 1;
+    min-width: 120px;
+    margin-bottom: $spacing-sm;
+    
+    &.active {
+      @include button-primary;
+    }
+
+    @media (max-width: $breakpoint) {
+      width: 100%;
+    }
+  }
+  
+  .button-text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,189 @@
+@import '../../../styles/variables';
+@import '../../../styles/colors';
+
+$connector-width: 2px;
+$connector-height: 20px;
+
+.employee-wrapper {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  &.vertical {
+    flex-direction: column;
+  }
+  
+  &.horizontal {
+    flex-direction: row;
+  }
+}
+
+.employee-node {
+  padding: 8px 10px;
+  background-color: $White;
+  border: 1px solid $Gray300;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: $shadow-sm;
+  min-width: 120px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  
+  .vertical & {
+    margin: 5px 0;
+  }
+  
+  .horizontal & {
+    margin: 0px 8px 0 5px;
+  }
+  
+  &:hover {
+    background-color: $Blue50;
+    border-color: $Blue500;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+  
+  &.in-path {
+    border-color: $Blue500;
+    background-color: $Blue100;
+  }
+  
+  &.selected {
+    background-color: $Yellow700;
+    border-color: $Yellow800;
+    color: $White;
+    font-weight: 500;
+  }
+}
+
+.employee-name {
+  font-size: 14px;
+}
+
+.subordinates-container {
+  display: flex;
+  position: relative;
+  
+  &.vertical {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  &.horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.connector {
+  background-color: $Blue500;
+  position: relative;
+}
+
+.hierarchy-level {
+  display: flex;
+  position: relative;
+  
+  &.vertical {
+    flex-direction: row;
+    justify-content: center;
+    gap: $spacing-lg;
+    width: 100%;
+  }
+  
+  &.horizontal {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: $spacing-lg;
+  }
+}
+
+.subordinate-column {
+  display: flex;
+  position: relative;
+  
+  &.vertical {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  &.horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.vertical {
+  .vertical-connector {
+    width: $connector-width;
+    height: $connector-height;
+  }
+
+  .horizontal-connector {
+    height: $connector-width;
+    position: absolute;
+    top: 0;
+    
+    &.single-child {
+      width: 0;
+    }
+    
+    &.first-child:not(.single-child) {
+      width: 50%;
+      right: 0;
+    }
+    
+    &.last-child:not(.single-child) {
+      width: 50%;
+      left: 0;
+    }
+    
+    &:not(.first-child):not(.last-child) {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  .vertical-to-subordinate {
+    width: $connector-width;
+    height: $connector-height;
+  }
+}
+
+.horizontal {
+  .vertical-connector {
+    width: $connector-width;
+    height: $connector-height;
+    position: absolute;
+    left: -$connector-width;
+    
+    &.single-child {
+      height: 0;
+    }
+    
+    &.first-child:not(.single-child) {
+      height: 50%;
+      bottom: 0;
+    }
+    
+    &.last-child:not(.single-child) {
+      height: 50%;
+      top: 0;
+    }
+    
+    &:not(.first-child):not(.last-child) {
+      height: 100%;
+      top: 0;
+    }
+  }
+
+  .horizontal-to-subordinate {
+    left: -2px;
+    width: $connector-height;
+    height: $connector-width;
+  }
+}

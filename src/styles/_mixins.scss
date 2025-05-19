@@ -1,0 +1,37 @@
+@import 'variables';
+@import 'colors';
+
+@mixin button {
+  padding: $spacing-sm $spacing-md;
+  background-color: $Gray100;
+  border: 1px solid $Gray300;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    background-color: $Gray200;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($Blue500, 0.25);
+  }
+  
+  &.active {
+    background-color: $Blue500;
+    color: $White;
+    border-color: $Blue600;
+  }
+}
+
+@mixin button-primary {
+  @include button;
+  background-color: $Blue500;
+  color: $White;
+  border-color: $Blue600;
+  
+  &:hover {
+    background-color: $Blue600;
+  }
+}

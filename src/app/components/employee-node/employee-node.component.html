@@ -1,0 +1,50 @@
+<div class="employee-wrapper" [class.horizontal]="orientation === 'horizontal'" [class.vertical]="orientation === 'vertical'">
+  <div class="employee-node" 
+      [class.selected]="isSelected"
+      [class.in-path]="isInPath"
+      (click)="onSelect(employee)">
+    <span class="employee-name">{{ getFullName(employee) }}</span>
+  </div>
+  
+  <div *ngIf="employee.subordinates.length > 0" 
+      class="subordinates-container" 
+      [class.horizontal]="orientation === 'horizontal'" 
+      [class.vertical]="orientation === 'vertical'">
+
+    <div *ngIf="orientation === 'vertical'" class="connector vertical-connector"></div>
+    <div *ngIf="orientation === 'horizontal'" class="connector horizontal-connector"></div>
+    
+    <div class="hierarchy-level" [class.horizontal]="orientation === 'horizontal'" [class.vertical]="orientation === 'vertical'">
+      <ng-container *ngFor="let subordinate of employee.subordinates; let i = index; let isFirst = first; let isLast = last">
+        <div class="subordinate-column" [class.horizontal]="orientation === 'horizontal'" [class.vertical]="orientation === 'vertical'">
+
+          <ng-container *ngIf="orientation === 'vertical'">
+            <div class="connector horizontal-connector" 
+                [class.first-child]="isFirst" 
+                [class.last-child]="isLast"
+                [class.single-child]="employee.subordinates.length === 1">
+            </div>
+            <div class="connector vertical-to-subordinate"></div>
+          </ng-container>
+          
+          <ng-container *ngIf="orientation === 'horizontal'">
+            <div class="connector vertical-connector" 
+                [class.first-child]="isFirst" 
+                [class.last-child]="isLast"
+                [class.single-child]="employee.subordinates.length === 1">
+            </div>          
+            <div class="connector horizontal-to-subordinate"></div>
+          </ng-container>
+          
+          <app-employee-node [employee]="subordinate"
+                             [isSelected]="isSelectedFn(subordinate)"
+                             [isInPath]="isInPathFn(subordinate)"
+                             [isSelectedFn]="isSelectedFn"
+                             [isInPathFn]="isInPathFn"
+                             [orientation]="orientation"
+                             (select)="onSelect($event)"/>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

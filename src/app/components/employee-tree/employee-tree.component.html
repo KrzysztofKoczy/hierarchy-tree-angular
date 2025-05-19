@@ -1,0 +1,18 @@
+<div class="employee-tree" #treeContainer>
+  <div *ngIf="displayedStructure(); else noEmployee" 
+      class="tree-container" 
+      [class.horizontal]="orientation === 'horizontal'" 
+      [class.vertical]="orientation === 'vertical'">
+    <app-employee-node [employee]="displayedStructure()!"
+                       [isSelected]="isSelected(displayedStructure()!)"
+                       [isInPath]="isInPath(displayedStructure()!)"
+                       [isSelectedFn]="isSelected.bind(this)"
+                       [isInPathFn]="isInPath.bind(this)"
+                       [orientation]="orientation"
+                       (select)="selectEmployee($event)"/>
+  </div>
+
+  <ng-template #noEmployee>
+    <p class="no-employee">Wybierz pracownika, aby zobaczyć jego hierarchię.</p>
+  </ng-template>
+</div>

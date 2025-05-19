@@ -1,0 +1,38 @@
+<div class="employee-selector">
+  <div class="search-container">
+    <input type="text"
+          id="employee-search"
+          class="search-input"
+          placeholder="Wpisz imię lub nazwisko pracownika"
+          [value]="searchTerm()"
+          (input)="onSearchChange($event)"
+          (focus)="onFocus()"
+          (blur)="onBlur()"/>
+    
+    <button *ngIf="selectedEmployeeId()" 
+            class="clear-button" 
+            (click)="clearSelection()">
+      ×
+    </button>
+    
+    <button class="dropdown-icon" (click)="handleClickIcon()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [class.open]="isDropdownOpen()">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="dropdown-container" *ngIf="isDropdownOpen()">
+    <ul class="employee-list">
+      <li *ngIf="!filteredEmployees().length" class="no-results">
+        Brak wyników
+      </li>
+      <li *ngFor="let employee of filteredEmployees(); trackBy: trackEmployeeById" 
+          class="employee-item"
+          [class.selected]="employee.id === selectedEmployeeId()"
+          (click)="selectEmployee(employee)">
+          {{ getFullName(employee) }}
+      </li>
+    </ul>
+  </div>
+</div>

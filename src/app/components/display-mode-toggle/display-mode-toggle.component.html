@@ -1,0 +1,21 @@
+<div class="display-mode-toggle">
+  <div class="buttons-container">
+    <button class="toggle-button" 
+            [class.active]="displayMode === 'subordinates'"
+            (click)="setDisplayMode('subordinates')">
+      <span class="button-text">Pokaż podwładnych</span>
+    </button>
+    
+    <button class="toggle-button" 
+            [class.active]="displayMode === 'superiors'"
+            (click)="setDisplayMode('superiors')">
+      <span class="button-text">Pokaż przełożonych</span>
+    </button>
+    
+    <button class="toggle-button" 
+            [class.active]="displayMode === 'full'"
+            (click)="setDisplayMode('full')">
+      <span class="button-text">Pokaż całe drzewo</span>
+    </button>
+  </div>
+</div>

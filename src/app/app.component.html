@@ -1,0 +1,24 @@
+<div class="app-container" [class.collapsed]="isCollapsed()">
+  <header class="app-header">
+    <div class="header-top">
+      <h1 class="app-title">{{ title }}</h1>
+      <button class="collapse-toggle" (click)="toggleCollapse()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [class.collapsed]="isCollapsed()">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="controls-container" [class.collapsed]="isCollapsed()">
+      <div class="header-section" [class.collapsed]="isCollapsed()">
+        <app-employee-selector/>
+        <app-layout-toggle/>
+      </div>
+      <app-display-mode-toggle/>
+    </div>
+  </header>
+  
+  <main class="main-content">
+    <app-employee-tree/>
+  </main>
+</div>
