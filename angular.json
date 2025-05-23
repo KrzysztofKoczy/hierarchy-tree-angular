@@ -16,6 +16,7 @@
             "outputPath": "dist/recruitment-task",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "baseHref": "/hierarchy-tree-angular/",
             "polyfills": [
               "zone.js"
             ],
