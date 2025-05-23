@@ -2,6 +2,9 @@
 
 An interactive web application for visualizing and navigating organizational structures. This tool allows users to explore employee hierarchies, view relationships between managers and subordinates, and navigate through different views of the organizational chart.
 
+## 🚀 Live Demo
+
+Check out the live application: [Employee Hierarchy Tree Demo](https://krzysztofkoczy.github.io/hierarchy-tree-angular/)
 
 ## 🌟 Features
 
